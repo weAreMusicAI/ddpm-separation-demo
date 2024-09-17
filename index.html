@@ -5,15 +5,752 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Web demo for this paper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <p>Research project done at</p>
+                <img src="images/MUSICAI_logo.jpg" alt="Logo 1" class="logo-1">
+            </div>
+            <div class="logo-container">
+                <p>with the collaboration of</p>
+                <img src="images/MTG_logo.png" alt="Logo 2" class="logo-2">
+            </div>
+        </div>
+    </header>
+
+
     <div class="container">
         <h1>Web demo for "Generative-based Singing Voice Separation using Denoising Diffusion Probabilistic Models"</h1>
+        <h3>Genís Plaja-Roglans, Yun-Ning Hung, Xavier Serra, Igor Pereira</h3>
+        <h4>This work was done during a research internship at Music.AI. Currently submitted to ICASSP 2025 and under review.<br> Please send the correspondence to: genis.plaja@upf.edu.</h4>
+
         <p>
-            This page includes audio examples and relevant plots for our work on separating the singing voice from 
-            music mixtures using denoising diffusion probabilistic models (DDPM). This is currently work in progress.
+            <b>ABSTRACT:</b> Music source separation is the process of estimating the individual elements in a music mixture, and is 
+            generally addressed by a neural network that masks or transforms an input mixture into the target source(s). 
+            However, despite the recent ground-breaking developments towards generative modelling for many audio problems, 
+            few generative-based source separation attempts have been made. In this study, we aim at exploiting the waveform 
+            generation ability of score-based diffusion models, which are not limited by a subtractive mask, to achieve high 
+            quality and leakage-free separation. We focus on the singing voice, an important source that has not been extracted 
+            from music mixtures using diffusion models yet. By directly generating waveforms, the complex phase is implicitly 
+            modeled. We strongly guide the generation process using musical mixes as conditioners and improve over existing 
+            generative separation systems, while achieving competitive objective scores when the model is trained with additional 
+            data. A diffusion separation toolkit is published.
         </p>
+        
+        <p>
+            <b>What is this page about:</b> This page includes audio examples and other interesting resources for our work on separating the singing voice from 
+            music mixtures using denoising diffusion probabilistic models (DDPM). We provide audio examples comparing our method with models in the literature
+            but also comparing different configurations of our method.
+        </p>
+
+        <p>
+            <b>diffdmx, a Python toolkit to run diffusion separation experiments:</b> As claimed in the paper, we have created a Python
+            installable package to run experiments with the diffusion models. Currently, the code is private but we plan to make it public
+            after the review process. The idea behind the toolkit is that it contains all the building blocks to run several different
+            diffusion experiments by only tweaking the configuration file. New modules and components can be easily added.
+            See a code example below.
+        </p>
+
+
+        <!-- Horizontal Line -->
+        <p><br></p>
+        <p><br></p>
+        <hr class="thick-line">
+
+        <!-- SECTION 1 -->
+        <!-- SECTION 1 -->
+        <!-- SECTION 1 -->
+        <!-- SECTION 1 -->
+
+        <h2>Comparing our best system with models in the literature</h2>
+        <p style="text-align:center;">
+            <b>NOTE:</b> Our best system uses T=50, &eta;=0.4, f<sub>c</sub>=10k.
+            Please refer to paper for more details on each parameter.
+        </p>
+        <!-- SECTION 1 -->
+        <!-- SECTION 1 -->
+        <!-- SECTION 1 -->
+        <!-- SECTION 1 -->
+
+        <!-- Example 1 -->
+        <section class="audio-example-1">
+            <!-- <h2>Example 1: Song Title</h2> -->
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/14/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/14/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/14/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>BS-RNN Estimation</h3>
+                    <audio controls>
+                        <source src="audio/14/bsrnn.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>HT-Demucs Estimation</h3>
+                    <audio controls>
+                        <source src="audio/14/hdemucs.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>MSDM Estimation</h3>
+                    <audio controls>
+                        <source src="audio/14/msdm.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="audio-example-2">
+            <!-- <h2>Example 2: Another Song Title</h2> -->
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/42/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/42/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/42/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>BS-RNN Estimation</h3>
+                    <audio controls>
+                        <source src="audio/42/bsrnn.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>HT-Demucs Estimation</h3>
+                    <audio controls>
+                        <source src="audio/42/hdemucs.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>MSDM Estimation</h3>
+                    <audio controls>
+                        <source src="audio/42/msdm.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3 -->
+        <section class="audio-example-3">
+            <!-- <h2>Example 3: Another Song Title</h2> -->
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/40/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/40/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/40/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>BS-RNN Estimation</h3>
+                    <audio controls>
+                        <source src="audio/40/bsrnn.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>HT-Demucs Estimation</h3>
+                    <audio controls>
+                        <source src="audio/40/hdemucs.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>MSDM Estimation</h3>
+                    <audio controls>
+                        <source src="audio/40/msdm.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="audio-example-4">
+            <!-- <h2>Example 4: Another Song Title</h2> -->
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/30/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/30/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/30/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>BS-RNN Estimation</h3>
+                    <audio controls>
+                        <source src="audio/30/bsrnn.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>HT-Demucs Estimation</h3>
+                    <audio controls>
+                        <source src="audio/30/hdemucs.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>MSDM Estimation</h3>
+                    <audio controls>
+                        <source src="audio/30/msdm.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="audio-example-5">
+            <!-- <h2>Example 5: Another Song Title</h2> -->
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/6/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/6/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/6/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>BS-RNN Estimation</h3>
+                    <audio controls>
+                        <source src="audio/6/bsrnn.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>HT-Demucs Estimation</h3>
+                    <audio controls>
+                        <source src="audio/6/hdemucs.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>MSDM Estimation</h3>
+                    <audio controls>
+                        <source src="audio/6/msdm.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Horizontal Line -->
+        <p><br></p>
+        <p><br></p>
+        <hr class="thick-line">
+
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <h2>Comparing Diff-DMX-RT-musdb, Diff-DMX-extra, and Diff-DMX-RT-extra</h2>
+        <p style="text-align:center;"><b>NOTE:</b> Using the best found configuration for the three.</p>
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+
+        <!-- Example 1 -->
+        <section class="audio-example-1">
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/14/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/14/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-musdb</h3>
+                    <audio controls>
+                        <source src="audio/14/ours_only_musdb.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Diff-DMX-extra</h3>
+                    <audio controls>
+                        <source src="audio/14/ours_no_RT.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/14/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="audio-example-2">
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/40/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/40/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-musdb</h3>
+                    <audio controls>
+                        <source src="audio/40/ours_only_musdb.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Diff-DMX-extra</h3>
+                    <audio controls>
+                        <source src="audio/40/ours_no_RT.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/40/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3 -->
+        <section class="audio-example-3">
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/28/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/28/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-musdb</h3>
+                    <audio controls>
+                        <source src="audio/28/ours_only_musdb.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Diff-DMX-extra</h3>
+                    <audio controls>
+                        <source src="audio/28/ours_no_RT.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/28/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="audio-example-4">
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/23/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/23/vocals.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-musdb</h3>
+                    <audio controls>
+                        <source src="audio/23/ours_only_musdb.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Diff-DMX-extra</h3>
+                    <audio controls>
+                        <source src="audio/23/ours_no_RT.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Diff-DMX-RT-extra</h3>
+                    <audio controls>
+                        <source src="audio/23/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Horizontal Line -->
+        <p><br></p>
+        <p><br></p>
+        <hr class="thick-line">
+
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <h2>Comparing different configurations of the sampling algorithm on Diff-DMX-RT-extra</h2>
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+        <!-- SECTION 2 -->
+
+        <!-- Example 1 -->
+        <section class="audio-example-1">
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/6/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/6/vocals.wav"" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>T=20, &eta;=&#10007;, f<sub>c</sub>=&#10007;</h3>
+                    <audio controls>
+                        <source src="audio/6/ours_20_no_no.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=20, &eta;=0.2, f<sub>c</sub>=5k</h3>
+                    <audio controls>
+                        <source src="audio/6/ours_20_0.2_5k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=50, &eta;=0.4, f<sub>c</sub>=10k</h3>
+                    <audio controls>
+                        <source src="audio/6/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=100, &eta;=0.4, f<sub>c</sub>=10k</h3>
+                    <audio controls>
+                        <source src="audio/6/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="audio-example-2">
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/14/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/14/vocals.wav"" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>T=20, &eta;=&#10007;, f<sub>c</sub>=&#10007;</h3>
+                    <audio controls>
+                        <source src="audio/14/ours_20_no_no.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=20, &eta;=0.2, f<sub>c</sub>=5k</h3>
+                    <audio controls>
+                        <source src="audio/14/ours_20_0.2_5k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=50, &eta;=0.4, f<sub>c</sub>=10k</h3>
+                    <audio controls>
+                        <source src="audio/14/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=100, &eta;=0.4, f<sub>c</sub>=10k</h3>
+                    <audio controls>
+                        <source src="audio/14/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3 -->
+        <section class="audio-example-3">
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/40/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/40/vocals.wav"" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>T=20, &eta;=&#10007;, f<sub>c</sub>=&#10007;</h3>
+                    <audio controls>
+                        <source src="audio/40/ours_20_no_no.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=20, &eta;=0.2, f<sub>c</sub>=5k</h3>
+                    <audio controls>
+                        <source src="audio/40/ours_20_0.2_5k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=50, &eta;=0.4, f<sub>c</sub>=10k</h3>
+                    <audio controls>
+                        <source src="audio/40/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=100, &eta;=0.4, f<sub>c</sub>=10k</h3>
+                    <audio controls>
+                        <source src="audio/40/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+                
+        <!-- Example 4 -->
+        <section class="audio-example-4">
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>Mix</h3>
+                    <audio controls>
+                        <source src="audio/47/mix.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>Target Vocals</h3>
+                    <audio controls>
+                        <source src="audio/47/vocals.wav"" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <div class="audio-row">
+                <div class="audio-column">
+                    <h3>T=20, &eta;=&#10007;, f<sub>c</sub>=&#10007;</h3>
+                    <audio controls>
+                        <source src="audio/47/ours_20_no_no.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=20, &eta;=0.2, f<sub>c</sub>=5k</h3>
+                    <audio controls>
+                        <source src="audio/47/ours_20_0.2_5k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=50, &eta;=0.4, f<sub>c</sub>=10k</h3>
+                    <audio controls>
+                        <source src="audio/47/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-column">
+                    <h3>T=100, &eta;=0.4, f<sub>c</sub>=10k</h3>
+                    <audio controls>
+                        <source src="audio/47/ours_50_0.4_10k.wav" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Horizontal Line -->
+        <p><br></p>
+        <p><br></p>
+        <hr class="thick-line">
+
+        <h2>Visualising some interesting comparisons</h2>
+
+        <h3>Comparing worst vs. best config of Diff-DMX-RT-extra</h3>
+
+        <img src="images/comparison_1.png" alt="Comparing worst vs. best config" height="305">
+        <img src="images/comparison_2.png" alt="Comparing worst vs. best config 2" height="309">
+        <img src="images/comparison_3.png" alt="Comparing worst vs. best config 3" height="315">
+
+        <p><br></p>
+        <hr class="mid-thick-line">
+
+        <h3>Comparing Diff-DMX-RT-musdb vs. Diff-DMX-RT-extra on the same configuration</h3>
+
+        <img src="images/comparison_4.png" alt="Comparing musdb vs full-data model" height="320">
+        <img src="images/comparison_5.png" alt="Comparing musdb vs full-data model 2" height="319">
+        <img src="images/comparison_6.png" alt="Comparing musdb vs full-data model 3" height="318">
+
+
+        <!-- Horizontal Line -->
+        <p><br></p>
+        <p><br></p>
+        <hr class="thick-line">
+
+        <h2>The diffdmx Python package</h2>
+        <p>
+            As mentioned before, we have created a Python package to run experiments with the diffusion models. Users can easily run diffusion separation
+            experiments by only working on the Hydra configuration files. We provide files to reproduce the models in our work.
+            See an example of how we could set up a model in the config files.
+        </p>
+
+        <div class="code-block">
+            <pre><code class="yaml">
+            sample_rate: 44100
+            model:
+                diffusion:
+                    in_channels: 2
+                    out_channels: 2
+                    dim: 1  ## Generating waveforms
+                    channels: [16, 32, 64, 64, 128, 128, 256]
+                    context_channels: [0, 0, 0, 256, 512, 512, 512]
+                    factors: [1, 2, 4, 1, 4, 1, 4]
+                    items: [1, 1, 2, 2, 2, 2, 2]
+                    attentions: [0, 0, 0, 0, 1, 1, 1]
+                    attention_heads: 8
+                    attention_features: 64
+                    inject_system: concatenation
+                    sample_rate: ${sample_rate}
+                conditioner:
+                    _target_: diffdmx.conditioners.UniverseSeparator
+                    generator_network: adp
+                    attentions: [0, 0, 0, 0, 1, 1, 1]
+                    bn_transformer: true
+                    bn_size: 12
+                    in_cond_channels: [64, 128, 256, 256, 512, 512, 512]
+                    context_channels: ${model.diffusion.context_channels}
+                    downsampling_factors: ${model.diffusion.factors}
+                    sample_rate: ${sample_rate}
+                    mel_channels: 80
+                    loss_waveform: 'mse'
+                    loss_bottleneck: 'mse'
+                    loss_mel: null
+                    auxiliary_skip_connections: true
+                    mel_input: true
+                optimizer:
+                    lr: 1.e-6
+            </code></pre>
+        </div>
+
+        <p>
+            Users may create their own conditioners or generator networks in the package code, and summon them
+            using the config files. The package is designed to be modular and easy to extend.
+            <br>
+            <br>
+            Then, the code is executed through the command line:
+        </p>
+
+        <div class="code-block">
+            <pre><code class="bash">
+            python -m diffdmx.train +experiment=path/to/config/file
+            </code></pre>
+
     </div>
 </body>
 </html>
