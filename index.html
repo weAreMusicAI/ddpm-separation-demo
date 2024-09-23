@@ -28,7 +28,10 @@
     <div class="container">
         <h1>Web demo for "Generative-based Singing Voice Separation using Denoising Diffusion Probabilistic Models"</h1>
         <h3>Genís Plaja-Roglans, Yun-Ning Hung, Xavier Serra, Igor Pereira</h3>
-        <h4>This work was done during a research internship at Music.AI. Currently submitted to ICASSP 2025 and under review.<br> Please send the correspondence to: genis.plaja@upf.edu.</h4>
+        <h4>
+            This work was done during a research internship at Music.AI. Currently submitted to ICASSP 2025 and under review.<br> 
+            Please send the correspondence to: genis.plaja@upf.edu.
+        </h4>
 
         <p>
             <b>ABSTRACT:</b> Music source separation is the process of estimating the individual elements in a music mixture, and is 
@@ -517,9 +520,9 @@
                     </audio>
                 </div>
                 <div class="audio-column">
-                    <h3>T=20, &eta;=0.2, f<sub>c</sub>=5k</h3>
+                    <h3>T=50, &eta;=0.2, f<sub>c</sub>=10k</h3>
                     <audio controls>
-                        <source src="audio/6/ours_20_0.2_5k.wav" type="audio/mpeg">
+                        <source src="audio/6/ours_50_0.2_10k.wav" type="audio/mpeg">
                     </audio>
                 </div>
                 <div class="audio-column">
@@ -561,9 +564,9 @@
                     </audio>
                 </div>
                 <div class="audio-column">
-                    <h3>T=20, &eta;=0.2, f<sub>c</sub>=5k</h3>
+                    <h3>T=50, &eta;=0.2, f<sub>c</sub>=10k</h3>
                     <audio controls>
-                        <source src="audio/14/ours_20_0.2_5k.wav" type="audio/mpeg">
+                        <source src="audio/14/ours_50_0.2_10k.wav" type="audio/mpeg">
                     </audio>
                 </div>
                 <div class="audio-column">
@@ -605,9 +608,9 @@
                     </audio>
                 </div>
                 <div class="audio-column">
-                    <h3>T=20, &eta;=0.2, f<sub>c</sub>=5k</h3>
+                    <h3>T=50, &eta;=0.2, f<sub>c</sub>=10k</h3>
                     <audio controls>
-                        <source src="audio/40/ours_20_0.2_5k.wav" type="audio/mpeg">
+                        <source src="audio/40/ours_50_0.2_10k.wav" type="audio/mpeg">
                     </audio>
                 </div>
                 <div class="audio-column">
@@ -650,9 +653,9 @@
                     </audio>
                 </div>
                 <div class="audio-column">
-                    <h3>T=20, &eta;=0.2, f<sub>c</sub>=5k</h3>
+                    <h3>T=50, &eta;=0.2, f<sub>c</sub>=10k</h3>
                     <audio controls>
-                        <source src="audio/47/ours_20_0.2_5k.wav" type="audio/mpeg">
+                        <source src="audio/47/ours_50_0.2_10k.wav" type="audio/mpeg">
                     </audio>
                 </div>
                 <div class="audio-column">
@@ -678,16 +681,16 @@
 
         <h2>Visualising some interesting comparisons</h2>
 
-        <h3>Comparing worst vs. best config of Diff-DMX-RT-extra</h3>
+        <h3>Comparing most basic vs. best performing configuration of Diff-DMX-RT-extra</h3>
 
-        <img src="images/comparison_1.png" alt="Comparing worst vs. best config" height="280">
-        <img src="images/comparison_2.png" alt="Comparing worst vs. best config 2" height="283">
-        <img src="images/comparison_3.png" alt="Comparing worst vs. best config 3" height="288">
+        <img src="images/comparison_1.png" alt="Comparing basic vs. best config" height="280">
+        <img src="images/comparison_2.png" alt="Comparing basic vs. best config 2" height="283">
+        <img src="images/comparison_3.png" alt="Comparing basic vs. best config 3" height="288">
 
         <p><br></p>
         <hr class="mid-thick-line">
 
-        <h3>Comparing Diff-DMX-RT-musdb vs. Diff-DMX-RT-extra on the same configuration</h3>
+        <h3>Comparing Diff-DMX-RT-musdb vs. Diff-DMX-RT-extra on the same sampling configuration</h3>
 
         <img src="images/comparison_4.png" alt="Comparing musdb vs full-data model" height="292">
         <img src="images/comparison_5.png" alt="Comparing musdb vs full-data model 2" height="291">
@@ -701,8 +704,9 @@
 
         <h2>The diffdmx Python package</h2>
         <p>
-            As mentioned before, we have created a Python package to run experiments with the diffusion models. Users can easily run diffusion separation
-            experiments by only working on the Hydra configuration files. We provide files to reproduce the models in our work.
+            As mentioned before, we have created a diffusion separation toolkit which is wrapped up in a pip-installable Python package
+            to run separation experiments using diffusion models. Users can easily run different and diverse experiments by only working
+            on Hydra-based configuration files. We provide configuration files to reproduce the models in our work. 
             See an example of how we could set up a model in the config files.
         </p>
 
@@ -745,18 +749,29 @@
         </div>
 
         <p>
-            Users may create their own conditioners or generator networks in the package code, and summon them
-            using the config files. The package is designed to be modular and easy to extend.
+            Nonetheless, users may create their own conditioners or generator networks in the repository, and summon them
+            using the configuration files. The package is designed to be modular and easy to extend, so that adding new components
+            or modifying the existing modules is straightforward.
             <br>
             <br>
-            Then, the code is executed through the command line:
+            Then, the training code, for instance, is executed through the command line:
         </p>
 
         <div class="code-block">
             <pre><code class="bash">
             python -m diffdmx.train +experiment=path/to/config/file
             </code></pre>
+        </div>
 
-    </div>
+        <p>
+            Inference with the trained model is also done through the command line. We also provide example inference configuration files
+            which allow users to run the models on a given file, or on an entire folder of input mixtures.
+        </p>
+
+        <div class="code-block">
+            <pre><code class="bash">
+            python -m diffdmx.inference +experiment=path/to/config/file
+            </code></pre>
+        </div>
 </body>
 </html>
